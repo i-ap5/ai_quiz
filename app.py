@@ -1,6 +1,4 @@
 import streamlit as st
-import docx
-import re
 import os
 import logging
 import json
@@ -50,7 +48,7 @@ def parse_quiz_file_with_ai(file_path):
 
         # This is the "Master Prompt" that tells the AI how to behave
         prompt = """
-        You are an expert data extraction system with native multimodal understanding. You will be given a file (PDF or DOCX) that contains a quiz. Your only task is to analyze the entire document's layout, formatting, and text to extract all the questions and return them as a single, valid JSON array.
+        You are an expert data extraction system with native multimodal understanding. You will be given a file (PDF) that contains a quiz. Your only task is to analyze the entire document's layout, formatting, and text to extract all the questions and return them as a single, valid JSON array.
 
         Each JSON object in the array must have exactly three keys:
         1. "question": A string containing the full, complete text of the question.
@@ -107,9 +105,9 @@ def main():
         st.session_state.user_answers = {}
 
     if st.session_state.state == 'initial':
-        st.info("Upload any supported PDF or DOCX quiz file. The AI will do the rest!")
+        st.info("Upload any supported PDF quiz file. The AI will do the rest!")
         
-        uploaded_file = st.file_uploader("Upload your Quiz File", type=["pdf", "docx"])
+        uploaded_file = st.file_uploader("Upload your Quiz File", type=["pdf"])
 
         if uploaded_file:
             # Save the uploaded file to a temporary location
