@@ -95,8 +95,8 @@ def parse_quiz_file_with_ai(file_path):
 # STREAMLIT APPLICATION UI
 # ==============================================================================
 def main():
-    st.set_page_config(page_title="AI Quiz Generator", page_icon="🧠", layout="centered")
-    st.title("🧠 Keedam AI Quiz Generator")
+    st.set_page_config(page_title="AI Quiz Generator", page_icon="✈️", layout="centered")
+    st.title("✈️ Keedam AI Quiz Generator")
 
     if 'state' not in st.session_state:
         st.session_state.state = 'initial'
@@ -194,8 +194,8 @@ def main():
             
             
             is_last_question = (q_index + 1 == len(st.session_state.questions))
-            button_text = "Finish Quiz" if is_last_question else "Next Question ➡️"
-            if st.button(button_text):
+            button_text = "Finish Quiz" if is_last_question else "Next Question ->"
+            if st.button(button_text,use_container_width=True ):
                 if not is_last_question:
                     st.session_state.current_question += 1
                     st.session_state.state = 'quiz_started'
